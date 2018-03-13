@@ -1,12 +1,21 @@
 package com.friday.pay.alipay.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.internal.util.AlipaySignature;
+import com.alipay.api.internal.util.StringUtils;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.friday.pay.alipay.constant.AlipayConsts;
+import com.friday.pay.alipay.dto.NotifyParams;
+import com.friday.pay.alipay.exception.AlipayUtilsException;
 
 /**
  * 支付宝H5支付工具类 <br>
@@ -21,6 +30,11 @@ public class AlipayUtils {
     private AlipayClient alipayClient;
     private String returnUrl;
     private String notifyUrl;
+    
+    private String alipayPublicKey;
+    private String signType;
+    private String appId;
+
 
     public static class Builder {
 
@@ -103,6 +117,10 @@ public class AlipayUtils {
 
         this.returnUrl = builder.returnUrl;
         this.notifyUrl = builder.notifyUrl;
+        this.alipayPublicKey = builder.alipayPublicKey;
+        this.signType = builder.signType;
+        this.appId = builder.appId;
+        
         this.alipayClient = new DefaultAlipayClient(builder.serverUrl, builder.appId, builder.privateKey, "json",
                 "UTF-8", builder.alipayPublicKey, builder.signType);
     }
@@ -163,6 +181,73 @@ public class AlipayUtils {
         String form = alipayClient.pageExecute(alipayRequest, "GET").getBody();
 
         return form;
+    }
+    
+    /**
+     * 验证签名
+     * @param params
+     * @return
+     * @throws AlipayApiException
+     */
+    public Boolean signCheck(Map<String, String> params) throws AlipayApiException {
+        boolean signVerified = AlipaySignature.rsaCheckV1(params, alipayPublicKey, "UTF-8", signType);
+        return signVerified;
+    }
+
+    /**
+     * 验证返回参数
+     * @param httpRequest
+     * @return
+     */
+    public NotifyParams resultCheck(HttpServletRequest httpRequest) {
+        Map<String, String> paramMap = getParams(httpRequest);
+
+        try {
+            boolean signVerified = AlipaySignature.rsaCheckV1(paramMap, alipayPublicKey, "UTF-8", signType);
+            if (!signVerified) {
+                throw new AlipayUtilsException("sign check fail");
+            }
+        } catch (AlipayApiException e) {
+            e.printStackTrace();
+            throw new AlipayUtilsException(e);
+        }
+        if (!appId.equals(paramMap.get(AlipayConsts.APP_ID_KEY))) {
+            throw new AlipayUtilsException("appId wrong");
+        }
+
+        NotifyParams params = new NotifyParams(paramMap);
+
+        if (StringUtils.isEmpty(params.getOutTradeNo())) {
+            throw new AlipayUtilsException("out trade number blank");
+        }
+
+        return params;
+    }
+    
+    /**
+     * 获取参数列表
+     * 
+     * @param httpRequest
+     * @return
+     */
+    private Map<String, String> getParams(HttpServletRequest httpRequest) {
+        Map<String, String> params = new HashMap<>();
+        Map<String, String[]> map = httpRequest.getParameterMap();
+
+        for (Map.Entry<String, String[]> entry : map.entrySet()) {
+            String ok = entry.getKey();
+            Object ov = entry.getValue();
+            String[] value = new String[1];
+            if (ov instanceof String[]) {
+                value = (String[]) ov;
+            } else {
+                value[0] = ov.toString();
+            }
+            for (int k = 0; k < value.length; k++) {
+                params.put(ok, value[k]);
+            }
+        }
+        return params;
     }
 
 }
