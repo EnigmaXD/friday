@@ -60,7 +60,7 @@ public class AlipayConsts {
 	}
 
 	public enum SignType {
-		RSA("RSA"), RSA2("RSA");
+		RSA("RSA"), RSA2("RSA2");
 
 		private String value;
 
