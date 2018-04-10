@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.friday</groupId>
+	<groupId>com.oudot.friday</groupId>
 	<artifactId>friday-pay</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -65,4 +65,19 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+       <repository>
+            <id>oudot-releases</id>
+            <name>oudotReleaseRepository</name>
+            <url>http://nexus.oudot.cn:8282/nexus/content/repositories/releases/</url>
+            <uniqueVersion>false</uniqueVersion>
+        </repository>
+        <snapshotRepository>
+            <id>oudot-snapshots</id>
+            <name>oudotSnapshotRepository</name>
+            <url>http://nexus.oudot.cn:8282/nexus/content/repositories/snapshots/</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+	</distributionManagement>
 </project>
