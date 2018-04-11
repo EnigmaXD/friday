@@ -1,5 +1,11 @@
 package com.friday.pay.alipay.constant;
 
+/**
+ * 支付宝工具类常量
+ * 
+ * @author xuyinghao
+ *
+ */
 public class AlipayConsts {
 
 	/**
@@ -26,12 +32,11 @@ public class AlipayConsts {
 	 * 产品码：手机网站支付 值为 {@value}
 	 */
 	public static final String PRODUCT_CODE_QUICK_WAP_WAY = "QUICK_WAP_WAY";
-	
+
 	/**
 	 * {@value}
 	 */
-    public static final String APP_ID_KEY = "app_id";
-
+	public static final String APP_ID_KEY = "app_id";
 
 	public enum ServerUrl {
 		/**
@@ -60,7 +65,14 @@ public class AlipayConsts {
 	}
 
 	public enum SignType {
-		RSA("RSA"), RSA2("RSA2");
+		/**
+		 * RSA
+		 */
+		RSA("RSA"),
+		/**
+		 * RSA2
+		 */
+		RSA2("RSA2");
 
 		private String value;
 
