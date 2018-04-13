@@ -1,4 +1,4 @@
-package com.friday.pay.wxpay.dto;
+package com.oudot.friday.pay.wxpay.dto;
 
 import java.util.HashMap;
 import java.util.Map;

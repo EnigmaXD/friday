@@ -1,11 +1,11 @@
-package com.friday.pay.alipay.handler;
+package com.oudot.friday.pay.alipay.handler;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.friday.pay.alipay.constant.AlipayConsts;
-import com.friday.pay.alipay.dto.AlipayNotifyParams;
-import com.friday.pay.alipay.exception.AlipayUtilsException;
-import com.friday.pay.alipay.util.AlipayUtils;
+import com.oudot.friday.pay.alipay.constant.AlipayConsts;
+import com.oudot.friday.pay.alipay.dto.AlipayNotifyParams;
+import com.oudot.friday.pay.alipay.exception.AlipayUtilsException;
+import com.oudot.friday.pay.alipay.util.AlipayUtils;
 
 /**
  * 异步通知接口模板

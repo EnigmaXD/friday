@@ -1,4 +1,4 @@
-package com.friday.pay.alipay.constant;
+package com.oudot.friday.pay.alipay.constant;
 
 /**
  * 支付宝工具类常量

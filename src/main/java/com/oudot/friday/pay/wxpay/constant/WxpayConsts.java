@@ -1,4 +1,4 @@
-package com.friday.pay.wxpay.constant;
+package com.oudot.friday.pay.wxpay.constant;
 
 /**
  * 微信支付常量

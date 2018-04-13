@@ -1,14 +1,14 @@
-package com.friday.pay.wxpay.handler;
+package com.oudot.friday.pay.wxpay.handler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.friday.pay.wxpay.constant.WxpayConsts;
-import com.friday.pay.wxpay.dto.WxpayNotifyParams;
-import com.friday.pay.wxpay.exception.WxpayUtilsException;
-import com.friday.pay.wxpay.util.WxpayUtils;
+import com.oudot.friday.pay.wxpay.constant.WxpayConsts;
+import com.oudot.friday.pay.wxpay.dto.WxpayNotifyParams;
+import com.oudot.friday.pay.wxpay.exception.WxpayUtilsException;
+import com.oudot.friday.pay.wxpay.util.WxpayUtils;
 
 /**
  * 微信支付结果通知接口模板

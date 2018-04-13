@@ -1,4 +1,4 @@
-package com.friday.pay.alipay.util;
+package com.oudot.friday.pay.alipay.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +13,9 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.internal.util.StringUtils;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
-import com.friday.pay.alipay.constant.AlipayConsts;
-import com.friday.pay.alipay.dto.AlipayNotifyParams;
-import com.friday.pay.alipay.exception.AlipayUtilsException;
+import com.oudot.friday.pay.alipay.constant.AlipayConsts;
+import com.oudot.friday.pay.alipay.dto.AlipayNotifyParams;
+import com.oudot.friday.pay.alipay.exception.AlipayUtilsException;
 
 /**
  * 支付宝H5支付工具类 <br>
@@ -48,7 +48,7 @@ public class AlipayUtils {
 		/**
 		 * 设置应用网关，默认生产环境
 		 * 
-		 * @see com.shishang.plugin.alipay.constant.AlipayConsts.ServerUrl
+		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.ServerUrl
 		 */
 		public Builder serverUrl(AlipayConsts.ServerUrl serverUrlEnum) {
 			this.serverUrl = serverUrlEnum.getValue();
@@ -98,7 +98,7 @@ public class AlipayUtils {
 		/**
 		 * 设置加密方式，默认RSA2
 		 * 
-		 * @see com.shishang.plugin.alipay.constant.AlipayConsts.SignType
+		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.SignType
 		 */
 
 		public Builder signType(AlipayConsts.SignType signTypeEnum) {

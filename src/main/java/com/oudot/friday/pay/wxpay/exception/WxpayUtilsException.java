@@ -1,4 +1,4 @@
-package com.friday.pay.wxpay.exception;
+package com.oudot.friday.pay.wxpay.exception;
 
 /**
  * 微信支付异常

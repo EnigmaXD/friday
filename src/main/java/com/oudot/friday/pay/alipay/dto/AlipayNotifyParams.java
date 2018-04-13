@@ -1,4 +1,4 @@
-package com.friday.pay.alipay.dto;
+package com.oudot.friday.pay.alipay.dto;
 
 import java.util.Map;
 

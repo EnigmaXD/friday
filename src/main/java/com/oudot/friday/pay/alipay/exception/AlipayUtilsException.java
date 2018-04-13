@@ -1,4 +1,4 @@
-package com.friday.pay.alipay.exception;
+package com.oudot.friday.pay.alipay.exception;
 
 /**
  * 支付宝异常

@@ -1,19 +1,19 @@
-package com.friday.pay.wxpay.util;
+package com.oudot.friday.pay.wxpay.util;
 
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.alipay.api.internal.util.StringUtils;
-import com.friday.pay.wxpay.constant.WxpayConsts;
-import com.friday.pay.wxpay.constant.WxpayConsts.TradeType;
-import com.friday.pay.wxpay.dto.WxpayNotifyParams;
-import com.friday.pay.wxpay.dto.WxpayPreOrderResult;
-import com.friday.pay.wxpay.dto.WxpaySDKParams;
-import com.friday.pay.wxpay.exception.WxpayUtilsException;
 import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayConfig;
 import com.github.wxpay.sdk.WXPayConstants.SignType;
+import com.oudot.friday.pay.wxpay.constant.WxpayConsts;
+import com.oudot.friday.pay.wxpay.constant.WxpayConsts.TradeType;
+import com.oudot.friday.pay.wxpay.dto.WxpayNotifyParams;
+import com.oudot.friday.pay.wxpay.dto.WxpayPreOrderResult;
+import com.oudot.friday.pay.wxpay.dto.WxpaySDKParams;
+import com.oudot.friday.pay.wxpay.exception.WxpayUtilsException;
 import com.github.wxpay.sdk.WXPayUtil;
 
 /**
