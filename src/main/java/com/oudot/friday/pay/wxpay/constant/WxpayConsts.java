@@ -8,7 +8,14 @@ package com.oudot.friday.pay.wxpay.constant;
  */
 public class WxpayConsts {
 
+	/**
+	 * {@value}
+	 */
 	public static final String NOTIFY_CONFIRM_SUCCESS_XML = "<?xml version='1.0' encoding='UTF-8' standalone='no'?><xml><return_msg>SUCCESS</return_msg><return_code>SUCCESS</return_code></xml>";
+
+	/**
+	 * {@value}
+	 */
 	public static final String NOTIFY_CONFIRM_FAIL_XML = "<?xml version='1.0' encoding='UTF-8' standalone='no'?><xml><return_msg>FAIL</return_msg><return_code>FAIL</return_code></xml>";
 
 	public enum Env {

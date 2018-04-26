@@ -38,7 +38,7 @@ public class AlipayConsts {
 	 */
 	public static final String APP_ID_KEY = "app_id";
 
-	public enum ServerUrl {
+	public enum Env {
 		/**
 		 * 正式网关
 		 */
@@ -47,19 +47,15 @@ public class AlipayConsts {
 		/**
 		 * 沙盒网关
 		 */
-		DEV("http://openapi.alipaydev.com/gateway.do");
-		private String value;
+		SANDBOX("http://openapi.alipaydev.com/gateway.do");
+		private String serverUrl;
 
-		ServerUrl(String value) {
-			this.value = value;
+		Env(String serverUrl) {
+			this.serverUrl = serverUrl;
 		}
 
-		public String getValue() {
-			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
+		public String getServerUrl() {
+			return serverUrl;
 		}
 
 	}
@@ -82,10 +78,6 @@ public class AlipayConsts {
 
 		public String getValue() {
 			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
 		}
 
 	}

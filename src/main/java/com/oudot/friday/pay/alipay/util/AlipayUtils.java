@@ -37,7 +37,7 @@ public class AlipayUtils {
 
 	public static class Builder {
 
-		private String serverUrl = AlipayConsts.ServerUrl.PRO.getValue();
+		private String serverUrl = AlipayConsts.Env.PRO.getServerUrl();
 		private String appId;
 		private String privateKey;
 		private String alipayPublicKey;
@@ -50,8 +50,8 @@ public class AlipayUtils {
 		 * 
 		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.ServerUrl
 		 */
-		public Builder serverUrl(AlipayConsts.ServerUrl serverUrlEnum) {
-			this.serverUrl = serverUrlEnum.getValue();
+		public Builder serverUrl(AlipayConsts.Env env) {
+			this.serverUrl = env.getServerUrl();
 			return this;
 		}
 
@@ -72,7 +72,7 @@ public class AlipayUtils {
 		}
 
 		/**
-		 * 设置支付宝，必填
+		 * 设置支付宝公钥，必填
 		 */
 		public Builder alipayPublicKey(String alipayPublicKey) {
 			this.alipayPublicKey = alipayPublicKey;
@@ -100,13 +100,29 @@ public class AlipayUtils {
 		 * 
 		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.SignType
 		 */
-
 		public Builder signType(AlipayConsts.SignType signTypeEnum) {
 			this.signType = signTypeEnum.getValue();
 			return this;
 		}
 
 		public AlipayUtils builder() {
+
+			if (StringUtils.isEmpty(this.appId)) {
+				throw new AlipayUtilsException("APPID must not be empty");
+			}
+			if (StringUtils.isEmpty(this.privateKey)) {
+				throw new AlipayUtilsException("privateKey must not be empty");
+			}
+			if (StringUtils.isEmpty(this.alipayPublicKey)) {
+				throw new AlipayUtilsException("alipayPublicKey must not be empty");
+			}
+			if (StringUtils.isEmpty(this.returnUrl)) {
+				throw new AlipayUtilsException("returnUrl must not be empty");
+			}
+			if (StringUtils.isEmpty(this.notifyUrl)) {
+				throw new AlipayUtilsException("notifyUrl must not be empty");
+			}
+
 			return new AlipayUtils(this);
 		}
 
