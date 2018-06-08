@@ -49,9 +49,9 @@ public abstract class AbstractWxpayNotifyHanlder {
 
 		try {
 			WxpayNotifyParams params = getUtil().resultCheck(notifyData);
-			if (WxpayConsts.ReturnCode.SUCCESS.getValue().equals(params.getResultCode())) {
+			if (WxpayConsts.ReturnCode.SUCCESS.getValue().equals(params.getReturnCode())) {
 
-				if (WxpayConsts.ReturnResult.SUCCESS.getValue().equals(params.getResultCode())) {
+				if (WxpayConsts.ResultCode.SUCCESS.getValue().equals(params.getResultCode())) {
 					tradeSuccess(params);
 					return WxpayConsts.NOTIFY_CONFIRM_SUCCESS_XML;
 
