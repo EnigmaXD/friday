@@ -1,5 +1,11 @@
-package com.friday.pay.alipay.constant;
+package com.oudot.friday.pay.alipay.constant;
 
+/**
+ * 支付宝工具类常量
+ * 
+ * @author xuyinghao
+ *
+ */
 public class AlipayConsts {
 
 	/**
@@ -26,14 +32,13 @@ public class AlipayConsts {
 	 * 产品码：手机网站支付 值为 {@value}
 	 */
 	public static final String PRODUCT_CODE_QUICK_WAP_WAY = "QUICK_WAP_WAY";
-	
+
 	/**
 	 * {@value}
 	 */
-    public static final String APP_ID_KEY = "app_id";
+	public static final String APP_ID_KEY = "app_id";
 
-
-	public enum ServerUrl {
+	public enum Env {
 		/**
 		 * 正式网关
 		 */
@@ -42,25 +47,28 @@ public class AlipayConsts {
 		/**
 		 * 沙盒网关
 		 */
-		DEV("http://openapi.alipaydev.com/gateway.do");
-		private String value;
+		SANDBOX("http://openapi.alipaydev.com/gateway.do");
+		private String serverUrl;
 
-		ServerUrl(String value) {
-			this.value = value;
+		Env(String serverUrl) {
+			this.serverUrl = serverUrl;
 		}
 
-		public String getValue() {
-			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
+		public String getServerUrl() {
+			return serverUrl;
 		}
 
 	}
 
 	public enum SignType {
-		RSA("RSA"), RSA2("RSA2");
+		/**
+		 * RSA
+		 */
+		RSA("RSA"),
+		/**
+		 * RSA2
+		 */
+		RSA2("RSA2");
 
 		private String value;
 
@@ -70,10 +78,6 @@ public class AlipayConsts {
 
 		public String getValue() {
 			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
 		}
 
 	}
