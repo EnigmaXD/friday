@@ -71,6 +71,7 @@ public class WxpayConsts {
 		}
 	}
 
+	@Deprecated
 	public enum ReturnResult {
 		/**
 		 * 成功
