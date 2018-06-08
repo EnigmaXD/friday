@@ -48,9 +48,20 @@ public class AlipayUtils {
 		/**
 		 * 设置应用网关，默认生产环境
 		 * 
-		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.ServerUrl
+		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.Env
 		 */
+		@Deprecated
 		public Builder serverUrl(AlipayConsts.Env env) {
+			this.serverUrl = env.getServerUrl();
+			return this;
+		}
+
+		/**
+		 * 设置环境，默认生产环境
+		 * 
+		 * @see com.oudot.friday.pay.alipay.constant.AlipayConsts.Env
+		 */
+		public Builder env(AlipayConsts.Env env) {
 			this.serverUrl = env.getServerUrl();
 			return this;
 		}
@@ -196,9 +207,9 @@ public class AlipayUtils {
 		content.put(AlipayConsts.PRODUCT_CODE_KEY, AlipayConsts.PRODUCT_CODE_QUICK_WAP_WAY);
 		// 填充业务参数
 		alipayRequest.setBizContent(JSONObject.toJSONString(content));
-		String form = alipayClient.pageExecute(alipayRequest, "GET").getBody();
+		String url = alipayClient.pageExecute(alipayRequest, "GET").getBody();
 
-		return form;
+		return url;
 	}
 
 	/**
