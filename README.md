@@ -1,5 +1,7 @@
 # Friday-pay支付组件
-本项目集成支付相关功能，目前之前支付宝、微信支付（app支付）
+本项目集成支付相关功能，目前支持支付宝、微信支付（app支付）
+
+
 
 ```xml  
 <dependency>
@@ -10,31 +12,24 @@
 ```
 
 ### 项目结构
-- com.oudot.friday.pay
-    - alipay
-        - constant 
-            + AlipayConsts
-        - dto 
-            + AlipayNotifyParams
-        - exception 
-            + AlipayUtilsException
-        - handler
-            + AbstractAlipayNotifyHandler
-        - util
-            + AlipayUtils 
-    - wxpay
-        - constant
-            + WxpayConsts
-        - dto
-            + WxpayNotifyParams
-            + WxpayPreOrderResult
-            + WxpaySDKParams
-        - exception
-            + WxpayUtilsException
-        - handler
-            + AbstractWxpayNotifyHanlder
-        - util
-            + WxpayUtils
+```
+└─com
+    └─oudot
+        └─friday
+            └─pay
+                ├─alipay    支付宝
+                │  ├─constant
+                │  ├─dto
+                │  ├─exception
+                │  ├─handler
+                │  └─util
+                └─wxpay     微信支付
+                    ├─constant
+                    ├─dto
+                    ├─exception
+                    ├─handler
+                    └─util
+```
 
 ### 支付宝 Alipay
 基于支付宝手机网站支付功能，相关文档：https://docs.open.alipay.com/203/105288/
@@ -52,7 +47,8 @@
 | signType        | 加密方式（默认SHA2）                 |
 
 ```java
-alipayUtils = new AlipayUtils.Builder().appId(PayConsts.ALIPAY_APP_ID)
+AlipayUtils alipayUtils = new AlipayUtils.Builder()
+                                        .appId(PayConsts.ALIPAY_APP_ID)
                                         .privateKey(PayConsts.ALIPAY_PRIVATE_KEY)
                                         .alipayPublicKey(PayConsts.ALIPAY_PUBLIC_KEY)
                                         .returnUrl(PayConsts.ALIPAY_RETURN_URL)
@@ -189,6 +185,15 @@ public class AlipayController extends AbstractAlipayNotifyHandler {
 
 **回跳链接** 回跳链接需在APP调起控件时传递，故不在此处配置
 
+```java
+ WxpayUtils wxpayUtils = new WxpayUtils.Builder()
+                                    .appId(PayConsts.WXPAY_APP_ID)
+                                    .mchId(PayConsts.WXPAY_MCH_ID)
+                                    .key(PayConsts.WXPAY_KEY)
+                                    .notifyUrl(PayConsts.WXPAY_NOTIFY_URL)
+                                    .env(Env.PRO)
+                                    .builder();
+```
 
 #### 发起支付
 通过调用统一下单接口生成预订单，将预订单参数传递给app，通过app端SDK调起支付控件。
