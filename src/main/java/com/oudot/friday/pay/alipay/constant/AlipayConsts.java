@@ -38,6 +38,15 @@ public class AlipayConsts {
 	 */
 	public static final String APP_ID_KEY = "app_id";
 
+	/**
+	 * {@value}
+	 */
+	public static final String NOTIFY_CONFIRM_SUCCESS = "success";
+	/**
+	 * {@value}
+	 */
+	public static final String NOTIFY_CONFIRM_FAIL = "fail";
+
 	public enum Env {
 		/**
 		 * 正式网关

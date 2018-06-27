@@ -137,8 +137,8 @@ public class AlipayController extends AbstractAlipayNotifyHandler {
     @ResponseBody
     @RequestMapping("/alipay/notifyUrl")
     @Override
-    public void receiver(HttpServletRequest httpRequest) {
-        super.receiver(httpRequest);
+    public String receiver(HttpServletRequest httpRequest) {
+       return super.receiver(httpRequest);
     }
 
     @Override

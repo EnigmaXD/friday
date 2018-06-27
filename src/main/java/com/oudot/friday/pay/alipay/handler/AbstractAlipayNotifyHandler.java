@@ -23,11 +23,12 @@ public abstract class AbstractAlipayNotifyHandler {
 	public abstract AlipayUtils getUtil();
 
 	/**
-	 * 业务入口
+	 * 业务入口 </br>
+	 * 确认接收成功后需要返回success字符串，否则会进行重发，间隔频率：4m,10m,10m,1h,2h,6h,15h
 	 * 
 	 * @return
 	 */
-	public void receiver(HttpServletRequest httpRequest) {
+	public String receiver(HttpServletRequest httpRequest) {
 
 		try {
 			AlipayNotifyParams params = getUtil().resultCheck(httpRequest);
@@ -55,7 +56,11 @@ public abstract class AbstractAlipayNotifyHandler {
 		} catch (AlipayUtilsException e) {
 			e.printStackTrace();
 			exceptionCaught(e);
+
+			return AlipayConsts.NOTIFY_CONFIRM_FAIL;
 		}
+
+		return AlipayConsts.NOTIFY_CONFIRM_SUCCESS;
 	}
 
 	/**
