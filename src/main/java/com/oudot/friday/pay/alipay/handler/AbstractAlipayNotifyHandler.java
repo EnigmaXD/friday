@@ -27,7 +27,7 @@ public abstract class AbstractAlipayNotifyHandler {
 	 * 
 	 * @return
 	 */
-	public void receiver(HttpServletRequest httpRequest) {
+	public String receiver(HttpServletRequest httpRequest) {
 
 		try {
 			AlipayNotifyParams params = getUtil().resultCheck(httpRequest);
@@ -55,7 +55,11 @@ public abstract class AbstractAlipayNotifyHandler {
 		} catch (AlipayUtilsException e) {
 			e.printStackTrace();
 			exceptionCaught(e);
+
+			return "ERROR";
 		}
+
+		return "SUCCESS";
 	}
 
 	/**
